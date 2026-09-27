@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- === LOADING SCREEN === -->
+  <div id="loadingScreen">
+    <h1>Bad Games</h1>
+    <img src="images/badgameslogo.png" alt="Bad Games Logo">
+    <p class="loading-text">Loading...</p>
+  </div>
+
+  <!-- TOP NAVIGATION -->
+  <div class="top-nav">
+    <button id="navUpgradesBtn">Upgrades</button>
+    <button id="navPrestigeBtn">Prestige</button>
+    <button id="navCasinoBtn">Casino</button>
+    <button id="navUpdatesBtn">Updates</button>
+    <button id="navHelpBtn">Help</button>
+  </div>
+
+  <!-- === HOME SCREEN === -->
+  <div id="homeScreen">
+    <div class="header" style="position: relative;">
+      <!-- Settings Button (Top Right, Themed) -->
+      <button id="navSettingsBtn" class="top-icon-btn" style="position: absolute; right: 10px; top: 10px;" title="Settings">⚙️</button>
+      
+      <h2><span id="cookieDisplay">0</span> Cookies</h2>
+      <div class="stats-row">
+        <p class="stat-text">per second: <span id="cpsDisplay">0.0</span></p>
+        <p class="stat-text">per click: <span id="cpcDisplay">1.0</span></p>
+      </div>
+    </div>
+    
+    <!-- Top-Left Artifacts Button & Cookie Area Wrapper -->
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 15px; margin-top: 5px;">
+      <button id="navArtifactsBtn" class="back-btn" style="padding: 6px 14px; font-size: 13px;">Artifacts</button>
+      <div style="width: 60px;"></div>
+    </div>
+
+    <div class="cookie-container" style="position: relative; display: flex; justify-content: center; align-items: center;">
+      <img src="images/cookie.png" id="bigCookie" alt="Cookie" style="cursor: pointer;">
+      <!-- Milk Image Display (Shows when equipped) -->
+      <img src="images/milk.png" id="milkDisplay" alt="Milk" style="display: none; position: absolute; bottom: 10px; right: 20px; width: 40px; height: 40px;" title="Glass of Milk (Active 2x Boost)">
+    </div>
+    
+    <!-- Bottom Left Artifact Boosts Display -->
+    <div id="artifactBoostsDisplay" style="font-size: 12px; color: #888; padding: 5px 15px; min-height: 20px;">
+      Artifact Boosts: None
+    </div>
+
+    <div id="messageBox"></div>
+    <hr>
+    
+    <!-- Building Store (All 15 Buildings) -->
+    <div class="store">
+      <div class="upgrade" id="buyCursor">
+        <img src="images/cursor.png" class="icon-img">
+        <div class="info"><b>Cursor</b><div class="cost">Cost: <span id="cursorCost">15</span></div></div>
+        <div class="count" id="cursorCount">0</div>
+      </div>
+      <div class="upgrade" id="buyGrandma">
+        <img src="images/grandma.png" class="icon-img">
+        <div class="info"><b>Grandma</b><div class="cost">Cost: <span id="grandmaCost">100</span></div></div>
+        <div class="count" id="grandmaCount">0</div>
+      </div>
+      <div class="upgrade" id="buyFarm">
+        <img src="images/farm.png" class="icon-img">
+        <div class="info"><b>Farm</b><div class="cost">Cost: <span id="farmCost">1100</span></div></div>
+        <div class="count" id="farmCount">0</div>
+      </div>
+      <div class="upgrade" id="buyMine">
+        <img src="images/mine.png" class="icon-img">
+        <div class="info"><b>Mine</b><div class="cost">Cost: <span id="mineCost">12000</span></div></div>
+        <div class="count" id="mineCount">0</div>
+      </div>
+      <div class="upgrade" id="buyFactory">
+        <img src="images/factory.png" class="icon-img">
+        <div class="info"><b>Factory</b><div class="cost">Cost: <span id="factoryCost">130000</span></div></div>
+        <div class="count" id="factoryCount">0</div>
+      </div>
+      <div class="upgrade" id="buyBank">
+        <img src="images/bank.png" class="icon-img">
+        <div class="info"><b>Bank</b><div class="cost">Cost: <span id="bankCost">1400000</span></div></div>
+        <div class="count" id="bankCount">0</div>
+      </div>
+      <div class="upgrade" id="buyTemple">
+        <img src="images/temple.png" class="icon-img">
+        <div class="info"><b>Temple</b><div class="cost">Cost: <span id="templeCost">20000000</span></div></div>
+        <div class="count" id="templeCount">0</div>
+      </div>
+      <div class="upgrade" id="buyWizardTower">
+        <img src="images/wizard_tower.png" class="icon-img">
+        <div class="info"><b>Wizard Tower</b><div class="cost">Cost: <span id="wizardTowerCost">330000000</span></div></div>
+        <div class="count" id="wizardTowerCount">0</div>
+      </div>
+      <div class="upgrade" id="buyShipment">
+        <img src="images/shipment.png" class="icon-img">
+        <div class="info"><b>Shipment</b><div class="cost">Cost: <span id="shipmentCost">5100000000</span></div></div>
+        <div class="count" id="shipmentCount">0</div>
+      </div>
+      <div class="upgrade" id="buyAlchemyLab">
+        <img src="images/alchemy_lab.png" class="icon-img">
+        <div class="info"><b>Alchemy Lab</b><div class="cost">Cost: <span id="alchemyLabCost">75000000000</span></div></div>
+        <div class="count" id="alchemyLabCount">0</div>
+      </div>
+      <div class="upgrade" id="buyPortal">
+        <img src="images/portal.png" class="icon-img">
+        <div class="info"><b>Portal</b><div class="cost">Cost: <span id="portalCost">1000000000000</span></div></div>
+        <div class="count" id="portalCount">0</div>
+      </div>
+      <div class="upgrade" id="buyTimeMachine">
+        <img src="images/time_machine.png" class="icon-img">
+        <div class="info"><b>Time Machine</b><div class="cost">Cost: <span id="timeMachineCost">14000000000000</span></div></div>
+        <div class="count" id="timeMachineCount">0</div>
+      </div>
+      <div class="upgrade" id="buyAntimatterCondenser">
+        <img src="images/antimatter_condenser.png" class="icon-img">
+        <div class="info"><b>Antimatter Condenser</b><div class="cost">Cost: <span id="antimatterCondenserCost">170000000000000</span></div></div>
+        <div class="count" id="antimatterCondenserCount">0</div>
+      </div>
+      <div class="upgrade" id="buyPrism">
+        <img src="images/prism.png" class="icon-img">
+        <div class="info"><b>Prism</b><div class="cost">Cost: <span id="prismCost">2100000000000000</span></div></div>
+        <div class="count" id="prismCount">0</div>
+      </div>
+      <div class="upgrade" id="buyChancemaker">
+        <img src="images/chancemaker.png" class="icon-img">
+        <div class="info"><b>Chancemaker</b><div class="cost">Cost: <span id="chancemakerCost">26000000000000000</span></div></div>
+        <div class="count" id="chancemakerCount">0</div>
+      </div>
+    </div>
+
+    <!-- Reset Button at the Bottom -->
+    <div style="padding: 20px; text-align: center;">
+      <button id="resetBtn" class="back-btn" style="background-color: #c0392b; color: white; width: 100%;">Reset Save Data</button>
+    </div>
+  </div>
+
+  <!-- === SETTINGS SCREEN === -->
+  <div id="settingsScreen" class="hidden">
+    <div class="header">
+      <h2>Settings</h2>
+      <p class="subtext" style="margin-bottom:0;">Customize your game</p>
+    </div>
+    <div class="store" style="padding: 20px; text-align: left;">
+      <label for="decimalSelect"><b>Decimal Places:</b></label>
+      <select id="decimalSelect" style="margin-left: 10px; padding: 5px;">
+        <option value="1">1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      <hr style="margin: 20px 0;">
+      <button id="settingsResetBtn" class="back-btn" style="background-color: #c0392b; color: white; width: 100%;">Reset Save Data</button>
+    </div>
+    <div class="pagination-controls">
+      <button class="back-btn" id="backToHomeFromSettings">Back</button>
+    </div>
+  </div>
+
+  <!-- === ARTIFACTS SCREEN === -->
+  <div id="artifactsScreen" class="hidden">
+    <div class="header">
+      <h2>Artifacts</h2>
+      <p class="subtext" style="margin-bottom:0;">Prestige Relics & Bonuses</p>
+    </div>
+    <div class="store" style="padding: 15px;">
+      <p style="margin-bottom: 15px;">Prestige Coins: <span id="prestigeCoinsDisplay" style="color: gold; font-weight: bold;">0</span></p>
+      
+      <!-- Glass of Milk Artifact Item -->
+      <div class="upgrade" id="buyArtifactMilk" style="display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center;">
+          <img src="images/milk.png" class="icon-img" style="margin-right: 10px;">
+          <div class="info">
+            <b>Glass of Milk</b>
+            <div class="cost">Cost: <span id="milkCost">1</span> Prestige Coin</div>
+            <div style="font-size: 11px; color: #aaa;">Gives a permanent 2x production boost when equipped.</div>
+          </div>
+        </div>
+        <div>
+          <button id="actionArtifactMilk" class="back-btn" style="padding: 6px 12px; font-size: 12px;">Buy</button>
+        </div>
+      </div>
+    </div>
+    <div class="pagination-controls">
+      <button class="back-btn" id="backToHomeFromArtifacts">Back</button>
+    </div>
+  </div>
+
+  <!-- === UPGRADES SCREEN === -->
+  <div id="upgradesScreen" class="hidden">
+    <div class="header">
+      <h2>Click Upgrades</h2>
+      <p class="subtext" style="margin-bottom:0;">Boost your clicking power!</p>
+    </div>
+    <div class="store" id="clickUpgradeList"></div>
+    <div class="pagination-controls">
+      <button class="back-btn" id="backToHomeFromUpgrades">Back</button>
+    </div>
+  </div>
+
+  <!-- === PRESTIGE SCREEN === -->
+  <div id="prestigeScreen" class="hidden">
+    <div class="header">
+      <h2>Prestige</h2>
+      <p class="subtext" style="margin-bottom:0;">Ascend to a higher plane.</p>
+    </div>
+    <div class="prestige-info">
+      <p>Current Multiplier: <span id="currentMultDisplay">1x</span></p>
+      <p>Prestige Level: <span id="prestigeLevelDisplay">0</span></p>
+      <p>Prestige Coins: <span id="prestigeCoinsPrestigeDisplay">0</span></p>
+      <hr>
+      <p><b>NEXT REQUIREMENT:</b><br><span id="prestigeReqDisplay">1,000,000</span> Cookies</p>
+      <p class="warning">Warning: Clicking Prestige will reset your Cookies, Buildings, and Upgrades.</p>
+      <p class="reward">Reward: Prestige Coins + Multiplier scaling.</p>
+    </div>
+    <button id="doPrestigeBtn">PRESTIGE</button>
+    <div class="pagination-controls">
+      <button class="back-btn" id="backToHomeFromPrestige">Back</button>
+    </div>
+  </div>
+
+  <!-- === CASINO SCREEN === -->
+  <div id="casinoScreen" class="hidden">
+    <div class="header">
+      <h2>Casino</h2>
+      <p class="subtext" style="margin-bottom:0;">Risk it all!</p>
+    </div>
+    
+    <div class="store casino-container">
+      <div class="slots-row">
+        <div class="slot-frame" id="slot1">7</div>
+        <div class="slot-frame" id="slot2">7</div>
+        <div class="slot-frame" id="slot3">7</div>
+      </div>
+      
+      <p id="casinoResult" class="casino-msg">Enter your bet below</p>
+      
+      <div class="bet-controls">
+        <input type="number" id="betInput" placeholder="Enter cookies..." min="1">
+        <button id="gambleBtn">GAMBLE</button>
+      </div>
+
+      <div class="payout-info">
+        <p><b>7 - 7 - 7</b> = 34x</p>
+        <p><b>Any Triple</b> = 8x</p>
+        <p><b>Any Pair</b> = 3x</p>
+      </div>
+    </div>
+
+    <div class="pagination-controls">
+      <button class="back-btn" id="backToHomeFromCasino">Back</button>
+    </div>
+  </div>
+
+  <!-- === UPDATES SCREEN === -->
+  <div id="updatesScreen" class="hidden">
+    <div class="header">
+      <h2>Update Log</h2>
+      <p class="subtext" style="margin-bottom:0;">What's new?</p>
+    </div>
+    <div id="updateContentArea" class="update-container"></div>
+    <div class="pagination-controls">
+      <button class="back-btn" id="backToHomeFromUpdates">Back</button>
+      <div class="page-arrows">
+        <button id="prevPageBtn">Prev</button>
+        <span id="pageIndicator">1/1</span>
+        <button id="nextPageBtn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- === HELP SCREEN === -->
+  <div id="helpScreen" class="hidden">
+    <div class="header">
+      <h2>Help Guide</h2>
+      <p class="subtext" style="margin-bottom:0;">How to play</p>
+    </div>
+    
+    <div class="store help-content">
+      <h3>Welcome to Cookie Clicker!</h3>
+      <p>The goal is simple: Bake as many cookies as you can! Here is everything you need to know to become the ultimate baker.</p>
+      
+      <h3>Artifacts & Prestige</h3>
+      <p>Reach the required cookies to Prestige, gain Prestige Coins, and buy powerful Artifacts like the Glass of Milk for a 2x boost!</p>
+
+      <h3>The Basics</h3>
+      <p>Click the big cookie to earn cookies. You can also hold <b>ENTER</b> on your keyboard!</p>
+    </div>
+
+    <div class="pagination-controls">
+      <button class="back-btn" id="backToHomeFromHelp">Back</button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

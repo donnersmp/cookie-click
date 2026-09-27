@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Cookie Clicker",
+  "version": "2.1",
+  "description": "Click cookies, buy upgrades, and get rich!",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/cookie.png"
+  },
+  "icons": {
+    "16": "images/cookie.png",
+    "48": "images/cookie.png",
+    "128": "images/cookie.png"
+  }
+}
